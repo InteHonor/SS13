@@ -470,10 +470,12 @@
 		if(user.translator_on)
 			user.add_language(LANGUAGE_UNATHI)
 			user.add_language(LANGUAGE_SIIK_MAAS)
+			user.add_language(LANGUAGE_VULPLANIN)
 			user.add_language(LANGUAGE_SKRELLIAN)
 		else
 			user.remove_language(LANGUAGE_UNATHI)
 			user.remove_language(LANGUAGE_SIIK_MAAS)
+			user.remove_language(LANGUAGE_VULPLANIN)
 			user.remove_language(LANGUAGE_SKRELLIAN)
 
 	is_active(mob/living/silicon/pai/user)

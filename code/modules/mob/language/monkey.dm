@@ -20,3 +20,8 @@
 	name = "Farwa"
 	desc = "Meow meow meow."
 	key = "9"
+
+/datum/language/vulpkanin/monkey
+	name = "Wolpin"
+	desc = "Bark bark bark."
+	key = "vu"
