@@ -1,9 +1,11 @@
 // BEGIN_INTERNALS
 /*
-LAST_COMPILE_TIME: 1459178330
-DIR: code code\__defines code\datums code\game code\game\objects code\game\objects\items code\game\objects\items\weapons code\game\objects\items\weapons\storage code\game\objects\structures code\modules code\modules\flufftext code\modules\mob 
+LAST_COMPILE_TIME: 1459264303
+DIR: code code\game\gamemodes code\game\objects code\game\objects\items code\game\objects\items\weapons code\game\objects\items\weapons\storage code\game\objects\structures code\modules code\modules\client code\modules\client\preference_setup\general code\modules\mob code\modules\mob\living code\modules\mob\living\carbon code\modules\mob\living\carbon\human code\modules\mob\living\carbon\human\species code\modules\mob\living\carbon\human\species\station code\modules\supermatter icons\effects icons\mob icons\mob\species icons\mob\species\tajaran icons\mob\species\vulplanin 
 AUTO_FILE_DIR: OFF
 MAP_ICON_TYPE: 0
 LAST_COMPILE_VERSION: 509.1319
+WINDOW: code\modules\mob\living\carbon\human\species\station\station.dm
+FILE: code\modules\mob\living\carbon\human\species\station\station.dm
 */
 // END_INTERNALS

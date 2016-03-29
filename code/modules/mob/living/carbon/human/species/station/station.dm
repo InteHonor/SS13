@@ -148,7 +148,7 @@
 	name_language = LANGUAGE_VULPLANIN										//+
 	primitive_form = "Wolpin"												//+
 	tail = "vulptail"														//-
-	tail_animation = 'icons/mob/species/vulplanin/tail.dmi'								//+
+//	tail_animation = 'icons/mob/species/vulplanin/tail.dmi'								//+
 	darksight = 8															//+
 
 	blurb = "Vulpkanin are a species of sharp-witted canine-pideds residing on the planet Altam just barely within the \
@@ -170,6 +170,8 @@
 
 	min_age = 17
 	max_age = 80
+
+	reagent_tag = IS_TAJARA
 
 	heat_discomfort_level = 292
 	heat_discomfort_strings = list(
