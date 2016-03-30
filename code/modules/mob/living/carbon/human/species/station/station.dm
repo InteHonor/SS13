@@ -136,6 +136,62 @@
 	..()
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/sandal(H),slot_shoes)
 
+/datum/species/vulpkanin
+	name = "Vulpkanin"														//+
+	name_plural = "Vulpkanin"												//+
+	icobase = 'icons/mob/human_races/r_vulpkanin.dmi'						//-
+	deform = 'icons/mob/human_races/r_vulpkanin.dmi'						//-
+	//path = /mob/living/carbon/human/vulpkanin								//-
+	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
+	default_language = "Galactic Common"									//+
+	secondary_langs = list(LANGUAGE_VULPLANIN)								//+
+	name_language = LANGUAGE_VULPLANIN										//+
+	primitive_form = "Wolpin"												//+
+	tail = "vulptail"														//-
+//	tail_animation = 'icons/mob/species/vulplanin/tail.dmi'								//+
+	darksight = 8															//+
+
+	blurb = "Vulpkanin are a species of sharp-witted canine-pideds residing on the planet Altam just barely within the \
+	dual-star Vazzend system. Their politically de-centralized society and independent natures have led them to become a species and \
+	culture both feared and respected for their scientific breakthroughs. Discovery, loyalty, and utilitarianism dominates their lifestyles \
+	to the degree it can cause conflict with more rigorous and strict authorities. They speak a guttural language known as 'Canilunzt' \
+    which has a heavy emphasis on utilizing tail positioning and ear twitches to communicate intent."
+
+	//flags = HAS_LIPS
+	//clothing_flags = HAS_UNDERWEAR | HAS_UNDERSHIRT | HAS_SOCKS
+	//bodyflags = FEET_PADDED | HAS_TAIL | HAS_HEAD_ACCESSORY | HAS_MARKINGS | HAS_SKIN_COLOR | TAIL_WAGGING
+	//dietflags = DIET_OMNI
+	//reagent_tag = PROCESS_ORG
+	spawn_flags = CAN_JOIN
+	appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
+
+	flesh_color = "#966464"
+	base_color = "#B43214"
+
+	min_age = 17
+	max_age = 80
+
+	reagent_tag = IS_TAJARA
+
+	heat_discomfort_level = 292
+	heat_discomfort_strings = list(
+		"Your fur prickles in the heat.",
+		"You feel uncomfortably warm.",
+		"Your overheated skin itches."
+		)
+	cold_discomfort_level = 275
+
+/*
+	suicide_messages = list(
+		"is attempting to bite their tongue off!",
+		"is jamming their claws into their eye sockets!",
+		"is twisting their own neck!",
+		"is holding their breath!")
+*/
+//datum/species/vulpkanin/handle_death(var/mob/living/carbon/human/H)
+//	H.stop_tail_wagging(1)
+
+
 /datum/species/skrell
 	name = "Skrell"
 	name_plural = "Skrell"

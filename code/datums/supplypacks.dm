@@ -91,6 +91,14 @@ var/list/all_supply_groups = list("Operations","Security","Hospitality","Enginee
 	containername = "\improper Farwa crate"
 	group = "Hydroponics"
 
+/datum/supply_packs/wolpin
+	name = "Wolpin crate"
+	contains = list (/obj/item/weapon/storage/box/monkeycubes/wolpincubes)
+	cost = 30
+	containertype = /obj/structure/closet/crate/freezer
+	containername = "\improper Wolpin crate"
+	group = "Hydroponics"
+
 /datum/supply_packs/skrell
 	name = "Neaera crate"
 	contains = list (/obj/item/weapon/storage/box/monkeycubes/neaeracubes)
