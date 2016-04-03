@@ -79,7 +79,7 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 		req_console_supplies |= department
 	if (departmentType & RC_INFO)
 		req_console_information |= department
-	
+
 	set_light(1)
 
 /obj/machinery/requests_console/Destroy()
@@ -150,7 +150,7 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 			reset_message(1)
 
 	if(href_list["writeAnnouncement"])
-		var/new_message = sanitize(input("Write your message:", "Awaiting Input", ""))
+		var/new_message = sanitize(input("Write your message:", "Awaiting Input", ""), ja_mode = POPUP)
 		if(new_message)
 			message = new_message
 		else
@@ -158,7 +158,7 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 
 	if(href_list["sendAnnouncement"])
 		if(!announcementConsole)	return
-		announcement.Announce(message, msg_sanitized = 1)
+		announcement.Announce(sanitize_chat(message), msg_sanitized = 1)
 		reset_message(1)
 
 	if( href_list["department"] && message )

@@ -25,7 +25,7 @@
 		timestamp += timerecorded
 
 		if(speaking)
-			storedinfo += "\[[time2text(timerecorded*10,"mm:ss")]\] [M.name] [speaking.format_message_plain(msg, verb)]"
+			storedinfo += "\[[time2text(timerecorded*10,"mm:ss")]\] [M.name] [sanitize_popup(speaking.format_message_plain(msg, verb))]"
 		else
 			storedinfo += "\[[time2text(timerecorded*10,"mm:ss")]\] [M.name] [verb], \"[msg]\""
 
@@ -167,7 +167,7 @@
 		var/playedmessage = storedinfo[i]
 		if (findtextEx(playedmessage,"*",1,2)) //remove marker for action sounds
 			playedmessage = copytext(playedmessage,2)
-		T.audible_message("<font color=Maroon><B>Tape Recorder</B>: [playedmessage]</font>")
+		T.audible_message("<font color=Maroon><B>Tape Recorder</B>: [sanitize_chat(playedmessage)]</font>")
 		if(storedinfo.len < i+1)
 			playsleepseconds = 1
 			sleep(10)

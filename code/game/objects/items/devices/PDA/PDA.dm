@@ -402,7 +402,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 			data["records"] = cartridge.create_NanoUI_values()
 
 		if(mode == 0)
-			cartdata["name"] = cartridge.name
+			cartdata["name"] = html_encode(cartridge.name)//RuBay (убираем improper из названия картриджа)
 			if(isnull(cartridge.radio))
 				cartdata["radio"] = 0
 			else
@@ -670,7 +670,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 		if ("Edit")
 			var/n = input(U, "Please enter message", name, notehtml) as message
 			if (in_range(src, U) && loc == U)
-				n = sanitizeSafe(n, extra = 0)
+				n = sanitizeSafe(n, extra = 0, ja_mode = POPUP)
 				if (mode == 1)
 					note = html_decode(n)
 					notehtml = note
@@ -703,7 +703,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 			var/t = input(U, "Please enter new ringtone", name, ttone) as text
 			if (in_range(src, U) && loc == U)
 				if (t)
-					if(src.hidden_uplink && hidden_uplink.check_trigger(U, lowertext(t), lowertext(lock_code)))
+					if(src.hidden_uplink && hidden_uplink.check_trigger(U, lowertext_alt(t), lowertext_alt(lock_code)))
 						U << "The PDA softly beeps."
 						ui.close()
 					else
@@ -953,7 +953,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 	if(tap)
 		U.visible_message("<span class='notice'>\The [U] taps on \his PDA's screen.</span>")
 	var/t = input(U, "Please enter message", P.name, null) as text
-	t = sanitize(t)
+	t = sanitize(t, ja_mode = POPUP)
 	//t = readd_quotes(t)
 	t = replace_characters(t, list("&#34;" = "\""))
 	if (!t || !istype(P))
@@ -985,11 +985,12 @@ var/global/list/obj/item/device/pda/PDAs = list()
 
 		tnote.Add(list(list("sent" = 1, "owner" = "[P.owner]", "job" = "[P.ownjob]", "message" = "[t]", "target" = "\ref[P]")))
 		P.tnote.Add(list(list("sent" = 0, "owner" = "[owner]", "job" = "[ownjob]", "message" = "[t]", "target" = "\ref[src]")))
+		var/t_chat = sanitize_chat(t)
 		for(var/mob/M in player_list)
 			if(M.stat == DEAD && M.is_preference_enabled(/datum/client_preference/ghost_ears)) // src.client is so that ghosts don't have to listen to mice
 				if(istype(M, /mob/new_player))
 					continue
-				M.show_message("<span class='game say'>PDA Message - <span class='name'>[owner]</span> -> <span class='name'>[P.owner]</span>: <span class='message'>[t]</span></span>")
+				M.show_message("<span class='game say'>PDA Message - <span class='name'>[owner]</span> -> <span class='name'>[P.owner]</span>: <span class='message'>[t_chat]</span></span>")
 
 		if(!conversations.Find("\ref[P]"))
 			conversations.Add("\ref[P]")
@@ -1004,9 +1005,9 @@ var/global/list/obj/item/device/pda/PDAs = list()
 			for(var/mob/living/silicon/ai/ai in mob_list)
 				// Allows other AIs to intercept the message but the AI won't intercept their own message.
 				if(ai.aiPDA != P && ai.aiPDA != src)
-					ai.show_message("<i>Intercepted message from <b>[who]</b>: [t]</i>")
+					ai.show_message("<i>Intercepted message from <b>[who]</b>: [t_chat]</i>")
 
-		P.new_message_from_pda(src, t)
+		P.new_message_from_pda(src, t_chat)
 		nanomanager.update_user_uis(U, src) // Update the sending user's PDA UI so that they can see the new message
 	else
 		U << "<span class='notice'>ERROR: Messaging server is not responding.</span>"
@@ -1301,7 +1302,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 		// Until we run out of complete tags...
 		while(tag_start&&tag_stop)
 			var/pre = copytext(raw_scan,1,tag_start) // Get the stuff that comes before the tag
-			var/tag = lowertext(copytext(raw_scan,tag_start+1,tag_stop)) // Get the tag so we can do intellegent replacement
+			var/tag = lowertext_alt(copytext(raw_scan,tag_start+1,tag_stop)) // Get the tag so we can do intellegent replacement
 			var/tagend = findtext(tag," ") // Find the first space in the tag if there is one.
 
 			// Anything that's before the tag can just be added as is.
