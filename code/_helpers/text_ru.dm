@@ -46,6 +46,13 @@ var/ja_temp_ascii = text2ascii(JA_TEMP)
 	#endif
 	return text
 
+proc/sanitize_russian(var/msg)
+	var/index = findtext(msg, "я")
+	while(index)
+		msg = copytext(msg, 1, index) + "&#255;" + copytext(msg, index+1)
+		index = findtext(msg, "я")
+	return msg
+
 /*
 * Замена стандартным lowertext() и uppertext(), которые не умеют в кириллицу.
 * Предполагается, что используется для текста с "я" в виде JA_TEMP
