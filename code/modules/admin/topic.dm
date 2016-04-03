@@ -1393,11 +1393,13 @@
 		var/mob/sender = locate(href_list["CentcommFaxReply"])
 		var/obj/machinery/photocopier/faxmachine/fax = locate(href_list["originfax"])
 
-		//todo: sanitize
-		var/input = input(src.owner, "Please enter a message to reply to [key_name(sender)] via secure connection. NOTE: BBCode does not work, but HTML tags do! Use <br> for line breaks.", "Outgoing message from Centcomm", "") as message|null
+		//todo: MD
+		//var/input = input(src.owner, "Please enter a message to reply to [key_name(sender)] via secure connection. NOTE: BBCode does not work, but HTML tags do! Use <br> for line breaks.", "Outgoing message from Centcomm", "") as message|null
+		var/input = sanitize(input(src.owner, "Please enter a message to reply to [key_name(sender)] via secure connection. NOTE: BBCode does not work.", "Outgoing message from Centcomm", "") as message|null, extra = 0, ja_mode = POPUP)
+		input = replacetext(input, "\n", "<br>")
 		if(!input)	return
 
-		var/customname = input(src.owner, "Pick a title for the report", "Title") as text|null
+		var/customname = sanitizeSafe(input(src.owner, "Pick a title for the report", "Title") as text|null, ja_mode = POPUP)
 
 		// Create the reply message
 		var/obj/item/weapon/paper/P = new /obj/item/weapon/paper( null ) //hopefully the null loc won't cause trouble for us
@@ -1878,7 +1880,7 @@
 
 	if(href_list["add_player_info"])
 		var/key = href_list["add_player_info"]
-		var/add = sanitize(input("Add Player Info") as null|text)
+		var/add = sanitize(input("Add Player Info") as null|text, ja_mode = POPUP)
 		if(!add) return
 
 		notes_add(key,add,usr)

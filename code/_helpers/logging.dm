@@ -21,7 +21,7 @@
 	world.log << "## TESTING: [msg][log_end]"
 
 /proc/game_log(category, text)
-	diary << "\[[time_stamp()]] [game_id] [category]: [text][log_end]"
+	diary << "\[[time_stamp()]] [game_id] [category]: [revert_ja(text)][log_end]"
 
 /proc/log_admin(text)
 	admin_log.Add(text)
