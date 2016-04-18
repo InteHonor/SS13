@@ -57,6 +57,10 @@
 		name = "Short Hair"	  // try to capatilize the names please~
 		icon_state = "hair_a" // you do not need to define _s or _l sub-states, game automatically does this for you
 
+	short2
+		name = "Short Hair 2"
+		icon_state = "hair_shorthair2"
+
 	resomi
 		name = "Resomi Plumage"
 		icon_state = "resomi_default"
@@ -526,7 +530,7 @@
 
 /datum/sprite_accessory/facial_hair
 
-	icon = 'icons/mob/Human_face.dmi'
+	icon = 'icons/mob/human_face.dmi'
 	gender = MALE // barf (unless you're a dorf, dorfs dig chix /w beards :P)
 
 	shaved

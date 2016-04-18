@@ -50,6 +50,7 @@
 	var/minimum_player_age = 7            	// Players need to be at least minimum_player_age days old before they are eligable for auto-spawning
 	var/suspicion_chance = 50               // Prob of being on the initial Command report
 	var/flags = 0                           // Various runtime options.
+	var/show_objectives_on_creation = 1     // Whether or not objectives are shown when a player is added to this antag datum
 
 	// Used for setting appearance.
 	var/list/valid_species =       list("Unathi","Tajara","Skrell","Human")
@@ -65,6 +66,8 @@
 	var/list/global_objectives =   list()   // Universal objectives if any.
 	var/list/candidates =          list()   // Potential candidates.
 	var/list/faction_members =     list()   // Semi-antags (in-round revs, borer thralls)
+	
+	var/allow_latejoin = 0					//Determines whether or not the game mode will allow for the template to spawn try_latespawn
 
 	// ID card stuff.
 	var/default_access = list()

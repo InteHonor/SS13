@@ -202,6 +202,7 @@ var/list/gamemode_cache = list()
 	var/list/event_delay_upper = list(EVENT_LEVEL_MUNDANE = 9000,	EVENT_LEVEL_MODERATE = 27000,	EVENT_LEVEL_MAJOR = 42000)
 
 	var/aliens_allowed = 0
+	var/alien_eggs_allowed = 0
 	var/ninjas_allowed = 0
 	var/abandon_allowed = 1
 	var/ooc_allowed = 1
@@ -468,12 +469,27 @@ var/list/gamemode_cache = list()
 				if ("aliens_allowed")
 					config.aliens_allowed = 1
 
+				if("alien_eggs_allowed")
+					config.alien_eggs_allowed = 1
+
 				if ("ninjas_allowed")
 					config.ninjas_allowed = 1
 
 				if ("objectives_disabled")
-					config.objectives_disabled = 1
-
+					if(!value)
+						log_misc("Could not find value for objectives_disabled in configuration.")
+						config.objectives_disabled = CONFIG_OBJECTIVE_NONE
+					else
+						switch(value)
+							if("none")
+								config.objectives_disabled = CONFIG_OBJECTIVE_NONE
+							if("verb")
+								config.objectives_disabled = CONFIG_OBJECTIVE_VERB
+							if("all")
+								config.objectives_disabled = CONFIG_OBJECTIVE_ALL
+							else
+								log_misc("Incorrect objective disabled definition: [value]")
+								config.objectives_disabled = CONFIG_OBJECTIVE_NONE
 				if("protect_roles_from_antagonist")
 					config.protect_roles_from_antagonist = 1
 

@@ -470,6 +470,65 @@ area/space/atmosalert()
 	lighting_use_dynamic = 1
 	icon_state = "yellow"
 
+//RESCUE
+
+//names are used
+/area/rescue_base
+	name = "\improper Response Team Base"
+	icon_state = "yellow"
+	requires_power = 0
+	lighting_use_dynamic = 1
+	flags = RAD_SHIELDED
+
+/area/rescue_base/base
+	name = "\improper Barracks"
+	icon_state = "yellow"
+	lighting_use_dynamic = 0
+
+/area/rescue_base/start
+	name = "\improper Response Team Base"
+	icon_state = "shuttlered"
+
+/area/rescue_base/southwest
+	name = "\improper south-west of SS13"
+	icon_state = "southwest"
+
+/area/rescue_base/northwest
+	name = "\improper north-west of SS13"
+	icon_state = "northwest"
+
+/area/rescue_base/northeast
+	name = "\improper north-east of SS13"
+	icon_state = "northeast"
+
+/area/rescue_base/southeast
+	name = "\improper south-east of SS13"
+	icon_state = "southeast"
+
+/area/rescue_base/north
+	name = "\improper north of SS13"
+	icon_state = "north"
+
+/area/rescue_base/south
+	name = "\improper south of SS13"
+	icon_state = "south"
+
+/area/rescue_base/commssat
+	name = "\improper west of the communication satellite"
+	icon_state = "west"
+
+/area/rescue_base/mining
+	name = "\improper northeast of the engineering station"
+	icon_state = "northeast"
+	base_turf = /turf/simulated/floor/asteroid
+
+/area/rescue_base/arrivals_dock
+	name = "\improper docked with station"
+	icon_state = "shuttle"
+
+/area/rescue_base/transit
+	name = "\improper hyperspace"
+	icon_state = "shuttle"
 
 //ENEMY
 
@@ -867,6 +926,10 @@ area/space/atmosalert()
 	name = "\improper Construction Area"
 	icon_state = "construction"
 
+/area/hallway/secondary/entry/pods
+	name = "\improper Arrival Shuttle Hallway - Escape Pods"
+	icon_state = "entry_pods"
+    
 /area/hallway/secondary/entry/fore
 	name = "\improper Arrival Shuttle Hallway - Fore"
 	icon_state = "entry_1"
@@ -2203,16 +2266,13 @@ var/list/the_station_areas = list (
 	/area/rnd,
 	/area/storage,
 	/area/construction,
-	/area/ai_monitored/storage/eva, //do not try to simplify to "/area/ai_monitored" --rastaf0,
+	/area/ai_monitored/storage/eva, //do not try to simplify to '/area/ai_monitored' --rastaf0,
 	/area/ai_monitored/storage/secure,
 	/area/ai_monitored/storage/emergency,
-	/area/turret_protected/ai_upload, //do not try to simplify to "/area/turret_protected" --rastaf0,
+	/area/turret_protected/ai_upload, //do not try to simplify to '/area/turret_protected' --rastaf0,
 	/area/turret_protected/ai_upload_foyer,
 	/area/turret_protected/ai,
 )
-
-
-
 
 /area/beach
 	name = "Keelin's private beach"
